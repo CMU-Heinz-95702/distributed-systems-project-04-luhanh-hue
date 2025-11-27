@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         version="4.0"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+
+    <display-name>Project4Task2</display-name>
+
+    <servlet>
+        <servlet-name>QuoteServlet</servlet-name>
+        <servlet-class>ds.task2.QuoteServlet</servlet-class>
+        <!-- Init params: Mongo URI and optional cache TTL -->
+        <init-param>
+            <param-name>ATLAS_URI_ENV</param-name>
+            <param-value>ATLAS_URI</param-value>
+        </init-param>
+        <init-param>
+            <param-name>CACHE_TTL_MS</param-name>
+            <param-value>15000</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>QuoteServlet</servlet-name>
+        <url-pattern>/api/quote</url-pattern>
+    </servlet-mapping>
+
+    <!-- Simple health check -->
+    <servlet>
+        <servlet-name>Health</servlet-name>
+        <servlet-class>ds.task2.QuoteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Health</servlet-name>
+        <url-pattern>/api/health</url-pattern>
+    </servlet-mapping>
+
+    <!-- Dashboard servlet -->
+    <servlet>
+        <servlet-name>DashboardServlet</servlet-name>
+        <servlet-class>ds.task2.DashboardServlet</servlet-class>
+        <init-param>
+            <param-name>ATLAS_URI_ENV</param-name>
+            <param-value>ATLAS_URI</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DashboardServlet</servlet-name>
+        <url-pattern>/dashboard</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>
