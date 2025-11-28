@@ -2,12 +2,12 @@
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
-                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-         version="6.0">
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
 
     <display-name>Project4Task2</display-name>
 
-    <!-- Quote API -->
+    <!-- Quote / Health servlet (REST-style, but still Servlets) -->
     <servlet>
         <servlet-name>QuoteServlet</servlet-name>
         <servlet-class>ds.task2.QuoteServlet</servlet-class>
@@ -16,6 +16,7 @@
             <param-name>ATLAS_URI_ENV</param-name>
             <param-value>ATLAS_URI</param-value>
         </init-param>
+
         <init-param>
             <param-name>CACHE_TTL_MS</param-name>
             <param-value>15000</param-value>
@@ -29,17 +30,12 @@
         <url-pattern>/api/quote</url-pattern>
     </servlet-mapping>
 
-    <!-- Health endpoint -->
-    <servlet>
-        <servlet-name>Health</servlet-name>
-        <servlet-class>ds.task2.QuoteServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
-        <servlet-name>Health</servlet-name>
+        <servlet-name>QuoteServlet</servlet-name>
         <url-pattern>/api/health</url-pattern>
     </servlet-mapping>
 
-    <!-- Dashboard -->
+    <!-- Dashboard servlet -->
     <servlet>
         <servlet-name>DashboardServlet</servlet-name>
         <servlet-class>ds.task2.DashboardServlet</servlet-class>
@@ -57,4 +53,10 @@
         <url-pattern>/dashboard</url-pattern>
     </servlet-mapping>
 
+    <!-- Optional default index -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
 </web-app>
+
