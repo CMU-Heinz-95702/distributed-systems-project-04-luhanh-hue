@@ -1,3 +1,11 @@
+/**
+ * Author: Luhan Huang
+ * AndrewID: luhanh
+ * Course: 95-702 Distributed Systems
+ * Project 4
+ *
+ * This file is part of my submission for Project .
+ */
 package ds.task2;
 
 import com.mongodb.client.MongoClient;
