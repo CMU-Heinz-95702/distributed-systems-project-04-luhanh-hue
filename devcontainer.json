@@ -2,5 +2,8 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
-  "forwardPorts": [8080]
+  "forwardPorts": [8080],
+  "containerEnv": {
+    "ATLAS_URI": "mongodb+srv://luhanhuang_db_user:nX7EJuq1bufZiMPC@cluster0.004kzja.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  }
 }
