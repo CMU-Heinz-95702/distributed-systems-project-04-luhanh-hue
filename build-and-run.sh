@@ -18,6 +18,9 @@ echo "Starting build and deployment process..."
 echo "Step 2: Building Docker image..."
 docker build -t ds-project-04 .
 
+echo "Step 2.1: Cleaning up any existing container..."
+docker rm -f ds-project-04-container 2>/dev/null || true
+
 # Step 3: Docker run
 echo "Step 3: Running Docker container..."
 docker run -d -p 8080:8080 --name ds-project-04-container ds-project-04
